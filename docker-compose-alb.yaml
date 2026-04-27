@@ -10,7 +10,7 @@ services:
       - board-network
 
   service-docker-install:
-    image: dkxm0908/nginx:1.29.7-docker-install
+    image: dkxm0908/nginx:1.29.7-docker-install2
     container_name: docker-install-nginx-container
     restart: always
     ports:
