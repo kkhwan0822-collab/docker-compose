@@ -19,7 +19,7 @@ services:
       - board-network
 
   service-docker-fastapi:
-    image: dkxm0908/fastapi:1.29.7-docker-v1
+    image: dkxm0908/fastapi:1.29.7-docker-v2
     container_name: docker-fastapi-container
     restart: always
     ports:
