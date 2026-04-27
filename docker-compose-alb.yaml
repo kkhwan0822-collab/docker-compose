@@ -23,7 +23,7 @@ services:
     container_name: docker-fastapi-container
     restart: always
     ports:
-      - "8000:80"
+      - "8000:8000"
     networks:
       - board-network
       
