@@ -10,7 +10,7 @@ services:
       - board-network
 
   service-docker-install:
-    image: dkxm0908/nginx:1.29.7-docker-install2
+    image: dkxm0908/nginx:1.29.7-docker-install 
     container_name: docker-install-nginx-container
     restart: always
     ports:
@@ -19,7 +19,7 @@ services:
       - board-network
 
   service-docker-fastapi:
-    image: dkxm0908/fastapi:1.29.7-docker-v2
+    image: dkxm0908/fastapi:1.29.7-docker
     container_name: docker-fastapi-container
     restart: always
     ports:
