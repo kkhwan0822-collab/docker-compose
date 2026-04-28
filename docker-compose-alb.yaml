@@ -1,6 +1,6 @@
 services:
   main:
-    image: dkxm0908/nginx:main3
+    image: dkxm0908/nginx:main
     container_name: main-container
     restart: always
     ports:
@@ -69,7 +69,7 @@ services:
       DB_NAME: iandb
 
   board-nginx:
-    image: dkxm0908/nginx:board1
+    image: dkxm0908/nginx:board
     container_name: board-nginx-container
     restart: always
     ports:
