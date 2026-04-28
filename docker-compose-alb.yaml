@@ -1,6 +1,6 @@
 services:
   main:
-    image: dkxm0908/nginx:main
+    image: dkxm0908/nginx:main2
     container_name: main-container
     restart: always
     ports:
@@ -21,7 +21,7 @@ services:
       - "8082:80"
 
   build:
-    image: dkxm0908/nginx:build
+    image: dkxm0908/nginx:build2
     container_name: build-container
     restart: always
     ports:
