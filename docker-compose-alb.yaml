@@ -50,6 +50,11 @@ services:
       MYSQL_DATABASE: iandb
       MYSQL_USER: ian
       MYSQL_PASSWORD: ian1234!
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pian1234!"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   board-fastapi:
     image: dkxm0908/fastapi:board
