@@ -1,6 +1,6 @@
 services:
   main:
-    image: dkxm0908/nginx:main2
+    image: dkxm0908/nginx:main3
     container_name: main-container
     restart: always
     ports:
