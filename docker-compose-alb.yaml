@@ -21,7 +21,7 @@ services:
       - "8082:80"
 
   build:
-    image: dkxm0908/nginx:build2
+    image: dkxm0908/nginx:build
     container_name: build-container
     restart: always
     ports:
@@ -42,7 +42,7 @@ services:
       - "8085:80"
 
   board-mysql:
-    image: dkxm0908/mysql:board
+    image: dkxm0908/mysql:board2
     container_name: mysql-primary-container
     restart: always
     environment:
