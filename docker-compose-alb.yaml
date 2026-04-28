@@ -1,36 +1,84 @@
 services:
-  # main 서비스 (Nginx)
-  service-docker-main:
-    image: dkxm0908/nginx:1.29.7-docker-main
-    container_name: docker-main-nginx-container
+  main:
+    image: dkxm0908/nginx:main
+    container_name: main-container
     restart: always
     ports:
       - "8080:80"
-    networks:
-      - board-network
 
-  service-docker-install:
-    image: dkxm0908/nginx:1.29.7-docker-install 
-    container_name: docker-install-nginx-container
+  swarm:
+    image: dkxm0908/nginx:swarm
+    container_name: swarm-container
     restart: always
     ports:
       - "8081:80"
-    networks:
-      - board-network
 
-  service-docker-fastapi:
-    image: dkxm0908/fastapi:1.29.7-docker
-    container_name: docker-fastapi-container
+  compose:
+    image: dkxm0908/nginx:compose
+    container_name: compose-container
+    restart: always
+    ports:
+      - "8082:80"
+
+  build:
+    image: dkxm0908/nginx:build
+    container_name: build-container
+    restart: always
+    ports:
+      - "8083:80"
+
+  install:
+    image: dkxm0908/nginx:install
+    container_name: install-container
+    restart: always
+    ports:
+      - "8084:80"
+
+  command:
+    image: dkxm0908/nginx:command
+    container_name: command-container
+    restart: always
+    ports:
+      - "8085:80"
+
+  board-mysql:
+    image: dkxm0908/mysql:board
+    container_name: mysql-primary-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ian1234!
+      MYSQL_DATABASE: iandb
+      MYSQL_USER: ian
+      MYSQL_PASSWORD: ian1234!
+
+  board-fastapi:
+    image: dkxm0908/fastapi:board
+    container_name: board-fastapi-container
+    restart: always
+    depends_on:
+      - board-mysql
+    environment:
+      DB_HOST: board-mysql
+      DB_USER: ian
+      DB_PASSWORD: ian1234!
+      DB_NAME: iandb
+
+  board-nginx:
+    image: dkxm0908/nginx:board
+    container_name: board-nginx-container
+    restart: always
+    ports:
+      - "8086:80"
+    depends_on:
+      - board-fastapi
+
+  kubernetes-fastapi:
+    image: dkxm0908/fastapi:kubernetes
+    container_name: kubernetes-container
     restart: always
     ports:
       - "8000:8000"
-    networks:
-      - board-network
-      
-      
-
 
 networks:
-  board-network:
+  default:
     driver: bridge
-
